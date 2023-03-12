@@ -124,8 +124,13 @@ console.log(`Server up on ${PORT}`);
 const temperatureSensor = new DHT22(1, 91);
 
 while (true) {
-  const { temperature } = await temperatureSensor.read();
-  thermostat.update({ temperature });
+  try {
+    const { temperature } = await temperatureSensor.read();
+    const fahrenheit = temperature * (9 / 5) + 32;
+    thermostat.update({ temperature: fahrenheit });
+  } catch (e) {
+    console.warn(e);
+  }
 
   await new Promise((resolve) => setTimeout(resolve, 30 * 1000));
 }
