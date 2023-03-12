@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ricokahler/node-dht22": "^0.1.0"
+    "@ricokahler/node-dht22": "^0.1.1"
   }
 }
